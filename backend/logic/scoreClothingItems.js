@@ -55,21 +55,34 @@ export function scoreClothingItems(structureFlags) {
     };
 
     Object.values(scores).forEach(entry => {
-        if (entry.score > 0) {
-            // Convert raw reasons into human-readable strings
-            entry.explanations = entry.reasons
-                .map(r => generateExplanation(r.ruleType, entry.item.value, r.featureId))
-                .filter(exp => exp !== null);
+        // Convert raw reasons into human-readable strings
+        entry.explanations = entry.reasons
+            .map(r => generateExplanation(r.ruleType, entry.item.value, r.featureId))
+            .filter(exp => exp !== null);
 
-            // Cleanup raw data before returning
-            delete entry.reasons;
+        // Cleanup raw data
+        delete entry.reasons;
 
-            result[entry.item.category].push(entry);
-        }
+        result[entry.item.category].push(entry);
     });
 
+    // Sort by score
     result.top.sort((a, b) => b.score - a.score);
     result.bottom.sort((a, b) => b.score - a.score);
+
+    // Calculate Match Percentages based on Category Max
+    const topMax = result.top.length > 0 ? result.top[0].score : 0;
+    const bottomMax = result.bottom.length > 0 ? result.bottom[0].score : 0;
+
+    result.top = result.top.map(item => ({
+        ...item,
+        matchScore: topMax > 0 ? Math.round((item.score / topMax) * 100) : 0
+    }));
+
+    result.bottom = result.bottom.map(item => ({
+        ...item,
+        matchScore: bottomMax > 0 ? Math.round((item.score / bottomMax) * 100) : 0
+    }));
 
     return result;
 }

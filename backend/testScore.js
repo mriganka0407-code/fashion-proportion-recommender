@@ -1,24 +1,31 @@
 import { scoreClothingItems } from "./logic/scoreClothingItems.js";
 
 const mockStructure = {
-    vertical: { shortTorso: true },
-    frame: { strongShoulderDominant: true },
-    waist: { stronglyCurvy: true },
+    vertical: { longTorso: true },
+    frame: { mildShoulderDominant: true },
+    waist: { blocky: true },
     chest: { lowProjection: true },
-    lowerBody: { voluminousThighs: true }
+    lowerBody: { straightThigh: true }
 };
 
 const result = scoreClothingItems(mockStructure);
 
-console.log("=== RECOMMENDED TOPS ===");
-result.top.forEach(r => {
-    console.log(`\n[${r.score}] ${r.item.value.toUpperCase()}`);
-    r.explanations.forEach(exp => console.log(`   - ${exp}`));
-});
+const printCategory = (label, items, categoryName) => {
+    console.log(`\n=== ${label} (Sorted by Match) ===`);
+    const active = items.filter(r => r.matchScore > 0);
+    const avoid = items.filter(r => r.matchScore === 0);
 
-console.log("\n=== RECOMMENDED BOTTOMS ===");
-result.bottom.forEach(r => {
-    console.log(`\n[${r.score}] ${r.item.value.toUpperCase()}`);
-    r.explanations.forEach(exp => console.log(`   - ${exp}`));
-});
+    active.forEach(r => {
+        console.log(`\n[${r.matchScore}% Match] ${r.item.value.toUpperCase()} (Score: ${r.score})`);
+        r.explanations.forEach(exp => console.log(`   - ${exp}`));
+    });
+
+    if (avoid.length > 0) {
+        console.log(`\n${categoryName} to Avoid:`);
+        console.log(`> ${avoid.map(n => n.item.value).join(", ")}`);
+    }
+};
+
+printCategory("ALL NECKLINES", result.top, "Necklines");
+printCategory("ALL BOTTOMS", result.bottom, "Bottoms");
 

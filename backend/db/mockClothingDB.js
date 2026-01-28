@@ -298,28 +298,66 @@ export const clothingItems = [
 */
 
 export const priorityMatrix = [
-    /* ---------- NECKLINES vs SHOULDERS ---------- */
-    { clothingId: 101, featureId: "strongShoulderDominant", score: 10, ruleType: "MINIMIZE_WIDTH" }, // v-neck
-    { clothingId: 112, featureId: "strongShoulderDominant", score: 2, ruleType: "MAXIMIZE_WIDTH" },  // crew
-    { clothingId: 114, featureId: "strongShoulderDominant", score: 1, ruleType: "MAXIMIZE_WIDTH" },  // boat
-    { clothingId: 108, featureId: "strongShoulderDominant", score: 6, ruleType: "MINIMIZE_WIDTH" },  // square
-    { clothingId: 118, featureId: "strongShoulderDominant", score: 1, ruleType: "MAXIMIZE_WIDTH" },  // halter
+    /* ================= NECKLINES ================= */
+    { clothingId: 101, featureId: "strongShoulderDominant", score: 10, ruleType: "MINIMIZE_WIDTH" },
+    { clothingId: 101, featureId: "shortTorso", score: 8, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 102, featureId: "shortTorso", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 103, featureId: "shortTorso", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 104, featureId: "strongShoulderDominant", score: 8, ruleType: "MINIMIZE_WIDTH" },
+    { clothingId: 108, featureId: "strongShoulderDominant", score: 7, ruleType: "MINIMIZE_WIDTH" },
+    { clothingId: 109, featureId: "lowProjection", score: 9, ruleType: "DEFINE_WAIST" },
+    { clothingId: 112, featureId: "longTorso", score: 8, ruleType: "SHORTEN_VERTICAL" },
+    { clothingId: 114, featureId: "strongHipDominant", score: 10, ruleType: "MAXIMIZE_WIDTH" },
+    { clothingId: 117, featureId: "longTorso", score: 10, ruleType: "SHORTEN_VERTICAL" },
 
-    /* ---------- NECKLINES vs CHEST ---------- */
-    { clothingId: 101, featureId: "lowProjection", score: 9, ruleType: "ELONGATE_VERTICAL" },
-    { clothingId: 109, featureId: "lowProjection", score: 8, ruleType: "SOFTEN_FRAME" },
-    { clothingId: 117, featureId: "lowProjection", score: 2, ruleType: "MAXIMIZE_WIDTH" }, // turtleneck
+    /* ================= JEANS: CUTS & VOLUME ================= */
+    // Straight Leg (Column Effect / Structure)
+    { clothingId: 205, featureId: "blocky", score: 10, ruleType: "COLUMN_EFFECT" },
+    { clothingId: 205, featureId: "straightThigh", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 205, featureId: "mildShoulderDominant", score: 7, ruleType: "BALANCE_VOLUME" },
+    { clothingId: 206, featureId: "straightThigh", score: 9, ruleType: "ELONGATE_VERTICAL" },
 
-    /* ---------- BOTTOM FIT vs THIGHS ---------- */
-    { clothingId: 212, featureId: "voluminousThighs", score: 9, ruleType: "ACCOMMODATE_VOLUME" }, // wide-leg
-    { clothingId: 216, featureId: "voluminousThighs", score: 8, ruleType: "BALANCE_VOLUME" },     // flare
-    { clothingId: 201, featureId: "voluminousThighs", score: 2, ruleType: "BALANCE_VOLUME" },     // skinny
-    { clothingId: 211, featureId: "voluminousThighs", score: 5, ruleType: "ACCOMMODATE_VOLUME" }, // baggy
+    // Skinny / Slim (Volume Reduction)
+    { clothingId: 201, featureId: "slimThighs", score: 10, ruleType: "DEFINE_WAIST" },
+    { clothingId: 201, featureId: "voluminousThighs", score: 3, ruleType: "BALANCE_VOLUME" },
+    { clothingId: 202, featureId: "slimThighs", score: 10, ruleType: "DEFINE_WAIST" },
+    { clothingId: 204, featureId: "balancedFrame", score: 8, ruleType: "ELONGATE_VERTICAL" },
 
-    /* ---------- RISE vs TORSO ---------- */
-    { clothingId: 223, featureId: "shortTorso", score: 9, ruleType: "ELONGATE_VERTICAL" }, // low-rise
-    { clothingId: 224, featureId: "shortTorso", score: 6, ruleType: "ELONGATE_VERTICAL" }, // mid-rise
-    { clothingId: 225, featureId: "shortTorso", score: 2, ruleType: "SHORTEN_VERTICAL" },  // high-rise
+    // Wide Leg / Baggy (Mass & Anchor)
+    { clothingId: 212, featureId: "strongShoulderDominant", score: 10, ruleType: "SILHOUETTE_ANCHOR" },
+    { clothingId: 212, featureId: "voluminousThighs", score: 9, ruleType: "ACCOMMODATE_VOLUME" },
+    { clothingId: 212, featureId: "straightThigh", score: 9, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 213, featureId: "strongShoulderDominant", score: 9, ruleType: "SILHOUETTE_ANCHOR" },
+    { clothingId: 211, featureId: "voluminousThighs", score: 10, ruleType: "ACCOMMODATE_VOLUME" },
 
-    { clothingId: 225, featureId: "longTorso", score: 9, ruleType: "SHORTEN_VERTICAL" }   // high-rise
+    // Flare & Bootcut (Counter-Balance)
+    { clothingId: 216, featureId: "strongShoulderDominant", score: 10, ruleType: "SILHOUETTE_ANCHOR" },
+    { clothingId: 216, featureId: "voluminousThighs", score: 10, ruleType: "BALANCE_VOLUME" },
+    { clothingId: 216, featureId: "blocky", score: 8, ruleType: "DEFINE_WAIST" },
+    { clothingId: 217, featureId: "strongShoulderDominant", score: 10, ruleType: "SILHOUETTE_ANCHOR" },
+    { clothingId: 217, featureId: "voluminousThighs", score: 9, ruleType: "BALANCE_VOLUME" },
+    { clothingId: 218, featureId: "strongShoulderDominant", score: 9, ruleType: "SILHOUETTE_ANCHOR" },
+    { clothingId: 218, featureId: "voluminousThighs", score: 9, ruleType: "BALANCE_VOLUME" },
+    { clothingId: 218, featureId: "blocky", score: 7, ruleType: "DEFINE_WAIST" },
+
+    // Curved / Tapered (Artificial Volume)
+    { clothingId: 214, featureId: "narrowPelvis", score: 10, ruleType: "MAXIMIZE_WIDTH" },
+    { clothingId: 215, featureId: "narrowPelvis", score: 10, ruleType: "MAXIMIZE_WIDTH" },
+    { clothingId: 207, featureId: "stronglyCurvy", score: 10, ruleType: "DEFINE_WAIST" },
+
+    /* ================= JEANS: RISE (Vertical Mechanics) ================= */
+    // High & Ultra High (Leg Elongation / Torso Compression)
+    { clothingId: 225, featureId: "shortLegs", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 225, featureId: "longTorso", score: 10, ruleType: "TORSO_COMPRESSION" },
+    { clothingId: 226, featureId: "shortLegs", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 226, featureId: "longTorso", score: 10, ruleType: "TORSO_COMPRESSION" },
+
+    // Low Rise (Torso Elongation)
+    { clothingId: 223, featureId: "shortTorso", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 224, featureId: "shortTorso", score: 8, ruleType: "ELONGATE_VERTICAL" },
+
+    /* ================= JEANS: LENGTH (Vertical Continuity) ================= */
+    { clothingId: 222, featureId: "shortLegs", score: 10, ruleType: "ELONGATE_VERTICAL" },
+    { clothingId: 220, featureId: "longLegs", score: 9, ruleType: "SHORTEN_VERTICAL" },
+    { clothingId: 219, featureId: "shortLegs", score: 7, ruleType: "ELONGATE_VERTICAL" }
 ];
