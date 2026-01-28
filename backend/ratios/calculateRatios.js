@@ -15,25 +15,26 @@ export function calculateRatios(measurements) {
   const leg = height - torso;
 
   return {
-    // Upper vs lower body balance
+    /* ---------- VERTICAL ---------- */
+    torsoLegRatio: torso / leg,
+    legHeightRatio: leg / height,
+
+    /* ---------- FRAME BALANCE ---------- */
     shoulderHipRatio: shoulder / hip,
+    pelvisHeightRatio: hip / height,
 
-    // Bust distribution
-    bustHipRatio: bust / hip,
-
-    // Waist structure
+    /* ---------- WAIST ---------- */
     waistTaperRatio: upperWaist / lowerWaist,
     waistHipRatio: upperWaist / hip,
+    waistSoftnessRatio: lowerWaist / hip,
 
-    // Chest structure
+    /* ---------- CHEST / UPPER TORSO ---------- */
     chestProjectionRatio: bust / underbust,
-    shoulderChestRatio: shoulder / bust,
+    upperTorsoDensityRatio: (shoulder + bust) / height,
 
-    // Thigh structure
+    /* ---------- LOWER BODY ---------- */
     thighHipRatio: upperThigh / hip,
-    thighTaperRatio: lowerThigh / upperThigh,
-
-    // Vertical proportions
-    torsoLegRatio: torso / leg
+    thighHeightRatio: upperThigh / height,
+    thighTaperRatio: lowerThigh / upperThigh
   };
 }
