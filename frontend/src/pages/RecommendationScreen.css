@@ -1,0 +1,345 @@
+.recommendation-screen {
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    padding-bottom: var(--spacing-giant);
+}
+
+.rec-header {
+    padding: var(--spacing-giant) 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-divider);
+    opacity: 0.9;
+    margin-bottom: var(--spacing-giant);
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    display: block;
+    margin-bottom: var(--spacing-s);
+}
+
+.stylist-intro {
+    max-width: 600px;
+    margin: var(--spacing-m) auto 0;
+    line-height: 1.8;
+}
+
+.rec-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--spacing-giant);
+}
+
+.category-section {
+    margin-bottom: var(--spacing-giant);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-icon {
+    color: var(--color-accent-gold);
+}
+
+.outfit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+/* 🃏 CARD SYSTEM */
+.outfit-card {
+    background: white;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: var(--transition-quiet);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(58, 54, 51, 0.03);
+}
+
+.outfit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(58, 54, 51, 0.06);
+}
+
+.outfit-card.owned {
+    background-color: #fbfbf9;
+}
+
+.card-image-section {
+    height: 240px;
+    background-color: var(--color-surface);
+    position: relative;
+    overflow: hidden;
+}
+
+.match-badge {
+    position: absolute;
+    top: var(--spacing-m);
+    left: var(--spacing-m);
+    background: white;
+    color: var(--color-accent-gold);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    z-index: 10;
+}
+
+.item-illustration-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #f8f6f2;
+    /* Paper color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.item-illustration {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    mix-blend-mode: multiply;
+    transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1), filter 0.8s ease;
+    z-index: 2;
+}
+
+.illustration-neckline {
+    background-size: 700%;
+    filter: brightness(0.95) contrast(1.1) sepia(0.1);
+}
+
+.illustration-bottom {
+    background-size: 700%;
+    filter: brightness(0.9) contrast(1.2) saturate(1.1) hue-rotate(-5deg);
+    /* Giving it a slightly warmer, more defined fashion-sketch look */
+}
+
+.outfit-card:hover .illustration-neckline,
+.outfit-card:hover .illustration-bottom {
+    transform: scale(1.08) rotate(1deg);
+    filter: brightness(1) contrast(1.1);
+}
+
+.watercolor-wash {
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(216, 180, 160, 0.25),
+            rgba(180, 196, 184, 0.15),
+            rgba(238, 224, 212, 0.2),
+            transparent 80%);
+    filter: blur(35px);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.item-illustration-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-s);
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-m);
+}
+
+.placeholder-text {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    font-weight: 600;
+}
+
+.sketch-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(var(--color-divider) 0.5px, transparent 0),
+        linear-gradient(45deg, rgba(58, 54, 51, 0.01) 25%, transparent 25%, transparent 50%, rgba(58, 54, 51, 0.01) 50%, rgba(58, 54, 51, 0.01) 75%, transparent 75%, transparent);
+    background-size: 10px 10px, 4px 4px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.card-content {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    flex-grow: 1;
+}
+
+.item-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary);
+    display: block;
+}
+
+.card-header h3 {
+    text-transform: capitalize;
+    margin-top: 4px;
+}
+
+.logic-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
+
+.logic-list li {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    display: flex;
+    gap: 8px;
+}
+
+.item-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-m);
+    padding: var(--spacing-s) var(--spacing-m);
+    background-color: #f9f9f9;
+    border-radius: var(--radius-s);
+}
+
+.attr-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+}
+
+.attr-label {
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 9px;
+}
+
+.attr-value {
+    color: var(--color-text-secondary);
+    text-transform: capitalize;
+}
+
+.info-icon {
+    color: var(--color-accent-blush);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* ☑️ CUSTOM CHECKBOX RULES */
+.card-actions {
+    margin-top: auto;
+    padding-top: var(--spacing-m);
+}
+
+.closet-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    cursor: pointer;
+    user-select: none;
+}
+
+.closet-toggle input {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--color-divider);
+    border-radius: 4px;
+    /* Soft circle/rounded square rule */
+    position: relative;
+    transition: var(--transition-quiet);
+}
+
+.closet-toggle input:checked+.checkbox-custom {
+    background-color: var(--color-accent-sage);
+    border-color: var(--color-accent-sage);
+}
+
+.closet-toggle input:checked+.checkbox-custom::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+/* 🧱 SIDEBAR */
+.capsule-sidebar {
+    position: sticky;
+    top: var(--spacing-xl);
+    height: fit-content;
+}
+
+.capsule-coach-card {
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-card);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+}
+
+.coach-icon {
+    margin: 0 auto;
+    color: var(--color-accent-rose);
+}
+
+.progress-container {
+    height: 6px;
+    background: white;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-accent-sage);
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coach-note {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+    .rec-layout {
+        grid-template-columns: 1fr;
+    }
+}

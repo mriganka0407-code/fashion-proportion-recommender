@@ -201,7 +201,7 @@ export const clothingItems = [
 /* ================= PRIORITY MATRIX ================= */
 
 export const priorityMatrix = [
-    /* ================= TOPS: POSITIVE MATCHES ================= */
+    /* ================= TOPS ================= */
     { clothingId: 101, featureId: "strongShoulderDominant", score: 10, ruleType: "MINIMIZE_WIDTH" },
     { clothingId: 101, featureId: "denseUpperTorso", score: 8, ruleType: "MINIMIZE_WIDTH" },
     { clothingId: 101, featureId: "shortTorso", score: 8, ruleType: "ELONGATE_VERTICAL" },
@@ -232,7 +232,7 @@ export const priorityMatrix = [
     { clothingId: 112, featureId: "denseUpperTorso", score: -7, ruleType: "MINIMIZE_EMPHASIS" },
     { clothingId: 118, featureId: "strongShoulderDominant", score: -8, ruleType: "MINIMIZE_EMPHASIS" },
 
-    /* ================= BOTTOMS: POSITIVE MATCHES ================= */
+    /* ================= BOTTOMS ================= */
     { clothingId: 212, featureId: "strongShoulderDominant", score: 15, ruleType: "SILHOUETTE_ANCHOR" },
     { clothingId: 212, featureId: "voluminousThighs", score: 12, ruleType: "ACCOMMODATE_VOLUME" },
     { clothingId: 212, featureId: "strongHipDominant", score: 10, ruleType: "BALANCE_VOLUME" },

@@ -1,0 +1,145 @@
+.measurement-screen {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xxl) var(--spacing-md);
+}
+
+.measurement-layout {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: var(--spacing-giant);
+    align-items: center;
+}
+
+.measurement-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
+
+.progress-track {
+    height: 2px;
+    background-color: var(--color-divider);
+    opacity: 0.3;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-accent-rose);
+}
+
+.step-counter {
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-secondary);
+}
+
+.measurement-intro h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-m);
+}
+
+.measurement-intro p {
+    line-height: 1.7;
+}
+
+.measurement-main {
+    background: white;
+    padding: var(--spacing-xxl);
+    border-radius: var(--radius-card);
+    box-shadow: 0 10px 40px rgba(58, 54, 51, 0.02);
+}
+
+.measurement-step-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.measurement-label {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-h2);
+    display: block;
+    margin-bottom: var(--spacing-s);
+}
+
+.measurement-desc {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 500px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-s);
+    border-bottom: 1px solid var(--color-divider);
+    padding-bottom: var(--spacing-s);
+    max-width: 350px;
+    transition: var(--transition-quiet);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--color-accent-rose);
+}
+
+.input-wrapper input {
+    font-size: 64px;
+    font-family: var(--font-serif);
+    border: none;
+    background: none;
+    width: 100%;
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.unit {
+    font-size: var(--font-size-h3);
+    color: var(--color-text-secondary);
+    font-family: var(--font-serif);
+}
+
+.form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 900px) {
+    .measurement-layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .measurement-sidebar {
+        text-align: center;
+    }
+
+    .measurement-main {
+        padding: var(--spacing-xl);
+    }
+}
+
+/* Hide number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
